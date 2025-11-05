@@ -6,16 +6,11 @@
 
 ---
 
-## ✨ Vision
+## 🧭 Vision
 
-The ultimate goal of EternityEngine is to simulate a dynamic world where:
+This project is not just a game. It's a **simulation foundation** for XianXia-inspired worlds — combining code-defined rules with AI storytelling.
 
-- Characters cultivate toward immortality (or fail trying)
-- Events unfold over centuries or millennia
-- Power structures shift, empires rise and fall
-- AI (or a human narrator) can describe the world like an unfolding novel
-
-Think of it as the engine behind a **living cultivation world**, driven by code but narrated through AI.
+📖 For full vision, world structure, and future plans — read [`VISION.md`](./docs/VISION.md)
 
 ---
 
