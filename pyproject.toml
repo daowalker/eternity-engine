@@ -1,0 +1,22 @@
+[project]
+name = "eternity-engine"
+version = "0.1.0"
+description = "Modular simulation engine for xianxia-style cultivation worlds."
+authors = [
+  {name = "Vitalii Veselovskyi", email = "daowalker.dev@gmail.com"}
+]
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/daowalker/eternity-engine"
+Documentation = "https://github.com/daowalker/eternity-engine/blob/main/docs/VISION.md"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["eternity_engine*"]
