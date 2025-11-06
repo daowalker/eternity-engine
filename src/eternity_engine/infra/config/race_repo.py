@@ -1,18 +1,23 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, Iterable
+from jsonschema.exceptions import ValidationError
 
 from eternity_engine.core.cultivators.race import Race
 from eternity_engine.core.cultivators.ports import RaceProvider
 from eternity_engine.io.config_loader import load_config
+from eternity_engine.io.validation import validate_with_schema
+from eternity_engine.infra.config_settings import ConfigSettings
 
 @dataclass(slots=True)
 class RaceRepository(RaceProvider):
     _by_id: Dict[str, Race]
 
     @classmethod
-    def from_file(cls, path: str) -> "RaceRepository":
-        data = load_config(path)
+    def from_file(cls, config_path, schema_path) -> "RaceRepository":
+        config_settings = ConfigSettings()
+        data = load_config(config_path)
+        validate_with_schema(data, schema_path)
         by_id: Dict[str, Race] = {}
         for item in data:
             r = Race(

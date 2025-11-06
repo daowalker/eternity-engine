@@ -11,7 +11,7 @@ class WorldCatalog:
     races: RaceProvider
 
 def build_catalog(settings: ConfigSettings) -> WorldCatalog:
-    races = RaceRepository.from_file(settings.races_path)
+    races = RaceRepository.from_file(settings.races_path, settings.races_scheme_path)
     return WorldCatalog(races=races)
 
 @lru_cache(maxsize=1)
