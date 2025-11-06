@@ -1,0 +1,7 @@
+- id: human
+  name: Human
+  absorb_qi: [Pure, Nature, Body]
+
+- id: demon
+  name: Demon
+  absorb_qi: [Demonic, Chaotic]

@@ -1,5 +1,17 @@
+# Byte-compiled / cache
 __pycache__/
-.cache/
-*.pyc
+*.py[cod]
+*.pyo
+
+# Virtual envs
 .venv/
-*.egg-info
+venv/
+env/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Tools
+.cache/
