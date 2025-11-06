@@ -1,22 +1,33 @@
-from eternity_engine.infra import get_catalog, ConfigSettings
-from eternity_engine.core.cultivators import Cultivator
+from eternity_engine.ai.backend_ollama import OllamaBackend
+from eternity_engine.ai.interpreter import NarrationInterpreter
 
-def main() -> None:
-    catalog = get_catalog(ConfigSettings())
-    human = catalog.races.get("human")
-    demon = catalog.races.get("demon")
+class EternityEngine:
+    def __init__(self):
+        self.backend = OllamaBackend(model="qwen3:8b")
+        self.narrator = NarrationInterpreter(self.backend)
+        self.world = None
+        self.event_manager = None
 
-    c = Cultivator(name="Soul", age=18, race=human)
-    print("Race:", c.race.id, c.race.name)
-    print("Absorb Nature?", c.can_absorb_qi("Nature"))
-    print("Absorb Demonic?", c.can_absorb_qi("Demonic"))
+    def tick(self):
+        world = {
+            "qi_density": "High",
+            "qi_types": ["Dragon Qi", "Yin Qi"],
+            "region_name": "Azure Moon Valley",
+        }
+        actor = {
+            "name": "Liang Feng",
+            "realm": "Core Formation (Early)",
+            "qi_summary": "Dragon Qi 120, Yin Qi 40",
+            "affiliation": "Azure Moon Sect",
+        }
+        event = {
+            "title": "Breakthrough Attempt",
+            "description": (
+                "Liang Feng focuses under the moonlight, trying to stabilize his Qi flow."
+            ),
+        }
 
-    print("--------")
-
-    dc = Cultivator(name="Demon Soul", age=18, race=demon)
-    print("Race:", dc.race.id, dc.race.name)
-    print("Absorb Nature?", dc.can_absorb_qi("Nature"))
-    print("Absorb Demonic?", dc.can_absorb_qi("Demonic"))
-
-if __name__ == "__main__":
-    main()
+        narration = self.narrator.narrate_event(world=world, actor=actor, event=event)
+        print("\n" + "─" * 90)
+        print(narration)
+        print("─" * 90 + "\n")
